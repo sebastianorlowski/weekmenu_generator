@@ -16,7 +16,7 @@ public class MealController {
 
     private final MealService mealService;
 
-    @PostMapping("/create-meal")
+    @PostMapping(value = "/create-meal", produces = "application/json", consumes = "application/json")
     public ResponseEntity<?> createMeal(@RequestBody @Valid MealDto mealDto) {
         return ResponseEntity.ok(mealService.createMeal(mealDto));
     }

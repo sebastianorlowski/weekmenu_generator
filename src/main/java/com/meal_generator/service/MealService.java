@@ -12,11 +12,11 @@ public class MealService {
 
     private MealRepository mealRepository;
 
-    public Meal createMeal(MealDto mealDto) {
-        Meal meal = new Meal();
-        meal.setName(meal.getName());
-        meal.setDays(mealDto.getDays());
+    public MealDto createMeal(MealDto mealDto) {
+        return null;
+    }
 
-        return mealRepository.save(meal);
+    private Meal saveMeal(Meal meal) {
+        return null;
     }
 }

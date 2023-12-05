@@ -6,6 +6,7 @@ import lombok.Data;
 public class IngredientDto {
 
     private String name;
-    private int count;
-    private int weight;
+    private Double value;
+    private Boolean isCountable;
+    private Boolean isDivisible;
 }
