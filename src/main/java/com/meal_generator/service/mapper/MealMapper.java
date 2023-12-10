@@ -8,6 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface MealMapper {
 
+
     Meal asMealEntity(MealDto mealDto);
 
     MealDto asMealDto(Meal meal);

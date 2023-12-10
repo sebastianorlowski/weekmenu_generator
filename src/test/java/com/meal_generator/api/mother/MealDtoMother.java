@@ -9,7 +9,7 @@ import java.util.List;
 public class MealDtoMother {
 
     private static final String NAME = "Spaghetti Bolognese";
-    private static final MealType MEAL_TYPE = MealType.DINNER;
+    private static final String MEAL_TYPE = MealType.DINNER.name();
     private static final Integer DAYS = 2;
     private static final List<IngredientDto> INGREDIENTS = List.of(
             IngredientDtoMother.complete()

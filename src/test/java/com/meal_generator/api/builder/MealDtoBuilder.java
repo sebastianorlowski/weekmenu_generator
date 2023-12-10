@@ -15,7 +15,7 @@ public class MealDtoBuilder {
         return this;
     }
 
-    public MealDtoBuilder withMealType(MealType mealType) {
+    public MealDtoBuilder withMealType(String mealType) {
         mealDto.setMealType(mealType);
         return this;
     }

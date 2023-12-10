@@ -8,10 +8,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "ingredients")
-@Data
 public class Ingredient extends BaseEntity {
 
     private String name;
@@ -23,4 +21,36 @@ public class Ingredient extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "meal_id", nullable = false)
     private Meal meal;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public Meal getMeal() {
+        return meal;
+    }
+
+    public void setMeal(Meal meal) {
+        this.meal = meal;
+    }
 }

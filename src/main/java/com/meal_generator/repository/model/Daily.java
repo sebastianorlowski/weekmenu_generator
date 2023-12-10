@@ -4,17 +4,15 @@ import com.meal_generator.repository.model.common.BaseEntity;
 import com.meal_generator.repository.model.enums.Day;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "daily")
 @Data
 public class Daily extends BaseEntity {
 
-    @Column(name = "day")
+    @Column(name = "days")
     @Enumerated(EnumType.STRING)
     private Day day;
 
