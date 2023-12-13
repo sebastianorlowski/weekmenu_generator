@@ -1,8 +1,8 @@
-package com.meal_generator.api.mother;
+package com.meal_generator.repository.mother;
 
-import com.meal_generator.api.builder.IngredientDtoBuilder;
+import com.meal_generator.repository.builder.IngredientBuilder;
 
-public class IngredientDtoMother {
+public class IngredientMother {
 
     public static final String NAME = "Tomato";
     public static final Integer WORTH = 500;
@@ -10,8 +10,8 @@ public class IngredientDtoMother {
     public static final Boolean IS_DIVISIBLE = false;
     public static final String EXTRA_INFO = "cut into small cubes";
 
-    public static IngredientDtoBuilder complete() {
-        return new IngredientDtoBuilder()
+    public static IngredientBuilder complete() {
+        return new IngredientBuilder()
                 .withName(NAME)
                 .withWorth(WORTH)
                 .withCountable(IS_COUNTABLE)

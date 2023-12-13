@@ -1,5 +1,6 @@
 package com.meal_generator.api.validation;
 
+import com.meal_generator.api.validation.exception.RecipeNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,13 @@ public class GlobalExceptionHandler {
         String error = ex.getMessage();
 
         return new ResponseEntity<>(getErrorsMap(List.of(error)), new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(RecipeNotFoundException.class)
+    public ResponseEntity<Map<String, List<String>>> handleValidationErrors(RecipeNotFoundException ex) {
+        String error = ex.getMessage();
+
+        return new ResponseEntity<>(getErrorsMap(List.of(error)), new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
 
     private Map<String, List<String>> getErrorsMap(List<String> errors) {

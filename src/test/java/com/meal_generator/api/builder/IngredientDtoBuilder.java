@@ -11,8 +11,8 @@ public class IngredientDtoBuilder {
         return this;
     }
 
-    public IngredientDtoBuilder withValue(Double value) {
-        ingredientDto.setValue(value);
+    public IngredientDtoBuilder withWorth(Integer worth) {
+        ingredientDto.setWorth(worth);
         return this;
     }
 
@@ -23,6 +23,11 @@ public class IngredientDtoBuilder {
 
     public IngredientDtoBuilder withDivisible(Boolean isDivisible) {
         ingredientDto.setIsDivisible(isDivisible);
+        return this;
+    }
+
+    public IngredientDtoBuilder withExtraInfo(String extraInfo) {
+        ingredientDto.setExtraInfo(extraInfo);
         return this;
     }
 

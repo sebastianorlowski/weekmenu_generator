@@ -22,8 +22,8 @@ public class Daily extends BaseEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "daily_meals",
+            name = "daily_recipes",
             joinColumns = @JoinColumn(name = "daily_id"),
-            inverseJoinColumns = @JoinColumn(name = "meal_id"))
-    private List<Meal> dailyMeals;
+            inverseJoinColumns = @JoinColumn(name = "recipe_id"))
+    private List<Recipe> dailyRecipes;
 }
