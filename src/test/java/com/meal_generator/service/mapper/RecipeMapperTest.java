@@ -2,10 +2,11 @@ package com.meal_generator.service.mapper;
 
 import com.meal_generator.api.dto.RecipeDto;
 import com.meal_generator.api.mother.IngredientDtoMother;
+import com.meal_generator.api.mother.MealDtoMother;
 import com.meal_generator.api.mother.RecipeDtoMother;
 import com.meal_generator.repository.model.Recipe;
-import com.meal_generator.repository.model.enums.RecipeType;
 import com.meal_generator.repository.mother.IngredientMother;
+import com.meal_generator.repository.mother.MealMother;
 import com.meal_generator.repository.mother.RecipeMother;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +33,7 @@ class RecipeMapperTest {
         Recipe result = mapper.asRecipeEntity(recipeDto);
 
         assertThat(result.getId()).isNull();
-        assertThat(result.getRecipeType()).isEqualTo(RecipeType.valueOf(RecipeDtoMother.RECIPE_TYPE));
+        assertThat(result.getExternalId()).isNull();
         assertThat(result.getDays()).isEqualTo(RecipeDtoMother.DAYS);
         assertThat(result.getInstruction()).isEqualTo(RecipeDtoMother.INSTRUCTION);
         assertThat(result.getEstimatedTime()).isEqualTo(RecipeDtoMother.ESTIMATED_TIME);
@@ -44,6 +45,7 @@ class RecipeMapperTest {
             assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientDtoMother.EXTRA_INFO);
         });
         assertThat(result.getDailyList()).isNull();
+        // to add meals
     }
 
     @Test
@@ -55,7 +57,6 @@ class RecipeMapperTest {
         RecipeDto result = mapper.asRecipeDto(recipe);
 
         assertThat(result.getExternalId()).isEqualTo(RecipeMother.EXTERNAL_ID);
-        assertThat(result.getRecipeType()).isEqualTo(RecipeMother.RECIPE_TYPE.name());
         assertThat(result.getDays()).isEqualTo(RecipeMother.DAYS);
         assertThat(result.getInstruction()).isEqualTo(RecipeMother.INSTRUCTION);
         assertThat(result.getEstimatedTime()).isEqualTo(RecipeMother.ESTIMATED_TIME);
@@ -66,6 +67,7 @@ class RecipeMapperTest {
             assertThat(ingredient.getIsDivisible()).isEqualTo(IngredientMother.IS_DIVISIBLE);
             assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientMother.EXTRA_INFO);
         });
+        assertThat(result.getMeals()).isNull();
     }
 
     @Test
@@ -90,7 +92,6 @@ class RecipeMapperTest {
 
         assertThat(result.getId()).isEqualTo(RecipeMother.ID);
         assertThat(result.getExternalId()).isEqualTo(RecipeMother.EXTERNAL_ID);
-        assertThat(result.getRecipeType()).isEqualTo(RecipeMother.RECIPE_TYPE);
         assertThat(result.getDays()).isEqualTo(days);
         assertThat(result.getInstruction()).isEqualTo(instruction);
         assertThat(result.getEstimatedTime()).isEqualTo(RecipeMother.ESTIMATED_TIME);
@@ -102,6 +103,9 @@ class RecipeMapperTest {
             assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientMother.EXTRA_INFO);
         });
         assertThat(result.getDailyList()).isNull();
+        assertThat(result.getMealRecipes()).singleElement().satisfies(recipe -> {
+            assertThat(recipe.getStartAt()).isEqualTo(MealMother.START_AT);
+            assertThat(recipe.getName()).isEqualTo(MealMother.NAME);
+        });
     }
-
 }

@@ -1,7 +1,6 @@
 package com.meal_generator.repository.model;
 
-import com.meal_generator.repository.model.common.BaseEntity;
-import com.meal_generator.repository.model.enums.RecipeType;
+import com.meal_generator.repository.model.common.AuditableEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,14 +11,10 @@ import java.util.List;
 @Table(name = "recipes")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Recipe extends BaseEntity {
+public class Recipe extends AuditableEntity {
 
     @Column
     private String name;
-
-    @Column(name = "recipe_type")
-    @Enumerated(EnumType.STRING)
-    private RecipeType recipeType;
 
     @Column
     private Integer days;
@@ -35,4 +30,7 @@ public class Recipe extends BaseEntity {
 
     @ManyToMany(mappedBy = "dailyRecipes")
     private List<Daily> dailyList;
+
+    @ManyToMany(mappedBy = "mealRecipes")
+    private List<Meal> mealRecipes;
 }

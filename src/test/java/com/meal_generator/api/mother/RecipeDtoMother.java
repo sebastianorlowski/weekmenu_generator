@@ -2,7 +2,6 @@ package com.meal_generator.api.mother;
 
 import com.meal_generator.api.builder.RecipeDtoBuilder;
 import com.meal_generator.api.dto.IngredientDto;
-import com.meal_generator.repository.model.enums.RecipeType;
 
 import java.util.List;
 
@@ -10,7 +9,6 @@ public class RecipeDtoMother {
 
     public static final String EXTERNAL_ID = "d37515eb-e5f1-4636-88f4-c169a1baf64b";
     public static final String NAME = "Spaghetti Bolognese";
-    public static final String RECIPE_TYPE = "DINNER";
     public static final Integer DAYS = 2;
     public static final List<IngredientDto> INGREDIENTS = List.of(
             IngredientDtoMother.complete()
@@ -62,15 +60,17 @@ public class RecipeDtoMother {
             "Once the spaghetti is cooked, drain it.\n" +
             "Serve the Bolognese sauce over the cooked spaghetti. You can sprinkle it with grated Parmesan and chopped fresh basil.";
     public static final Integer ESTIMATED_TIME = 30;
+    public static final String MEAL_EXTERNAL_ID = "de76efc4-d6b8-48e5-b0b1-05467b4ce141";
+    public static final List<String> MEALS = List.of(MEAL_EXTERNAL_ID);
 
     public static RecipeDtoBuilder complete() {
         return new RecipeDtoBuilder()
                 .withExternalId(EXTERNAL_ID)
                 .withName(NAME)
-                .withRecipeType(RECIPE_TYPE)
                 .withDays(DAYS)
                 .withIngredients(INGREDIENTS)
                 .withInstruction(INSTRUCTION)
-                .withEstimatedTime(ESTIMATED_TIME);
+                .withEstimatedTime(ESTIMATED_TIME)
+                .withMeals(MEALS);
     }
 }

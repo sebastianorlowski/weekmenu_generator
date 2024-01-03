@@ -4,6 +4,7 @@ import com.meal_generator.repository.builder.IngredientBuilder;
 
 public class IngredientMother {
 
+    public static final Long ID = 981L;
     public static final String NAME = "Tomato";
     public static final Integer WORTH = 500;
     public static final Boolean IS_COUNTABLE = true;
@@ -12,6 +13,7 @@ public class IngredientMother {
 
     public static IngredientBuilder complete() {
         return new IngredientBuilder()
+                .withId(ID)
                 .withName(NAME)
                 .withWorth(WORTH)
                 .withCountable(IS_COUNTABLE)

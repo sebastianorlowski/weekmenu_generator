@@ -25,6 +25,6 @@ public class Ingredient extends BaseEntity {
     private String extraInfo;
 
     @ManyToOne
-    @JoinColumn(name = "meal_id", nullable = false)
+    @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;
 }

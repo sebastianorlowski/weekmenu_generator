@@ -2,6 +2,7 @@ package com.meal_generator.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meal_generator.api.common.ApiPath;
+import com.meal_generator.api.controller.RecipeController;
 import com.meal_generator.api.dto.RecipeDto;
 import com.meal_generator.api.mother.IngredientDtoMother;
 import com.meal_generator.api.mother.RecipeDtoMother;
@@ -72,20 +73,6 @@ public class RecipeValidationTest {
             RecipeDto recipeDto = RecipeDtoMother.complete().withName(longString).build();
 
             validate(recipeDto, RECIPE_NAME_LENGTH_ERROR);
-        }
-
-        @Test
-        void shouldThrowExceptionWhenMealTypeIsNull() throws Exception {
-            RecipeDto recipeDto = RecipeDtoMother.complete().withRecipeType(null).build();
-
-            validate(recipeDto, RECIPE_TYPE_REQUIRED_ERROR);
-        }
-
-        @Test
-        void shouldThrowExceptionWhenMealTypeIsWrong() throws Exception {
-            RecipeDto savedMeal = RecipeDtoMother.complete().withRecipeType("meal").build();
-
-            validate(savedMeal, RECIPE_TYPE_PATTERN_ERROR);
         }
 
         @Test
@@ -274,7 +261,6 @@ public class RecipeValidationTest {
                     RECIPE_DAYS_REQUIRED_ERROR,
                     RECIPE_INSTRUCTION_REQUIRED_ERROR,
                     RECIPE_NAME_REQUIRED_ERROR,
-                    RECIPE_TYPE_REQUIRED_ERROR,
                     RECIPE_INGREDIENTS_REQUIRED_ERROR
             };
 

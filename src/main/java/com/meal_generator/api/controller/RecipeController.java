@@ -1,4 +1,4 @@
-package com.meal_generator.api;
+package com.meal_generator.api.controller;
 
 import com.meal_generator.api.dto.RecipeDto;
 import com.meal_generator.repository.model.Recipe;

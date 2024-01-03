@@ -1,10 +1,8 @@
 package com.meal_generator.repository.builder;
 
-import com.meal_generator.api.builder.RecipeDtoBuilder;
-import com.meal_generator.api.dto.RecipeDto;
 import com.meal_generator.repository.model.Ingredient;
+import com.meal_generator.repository.model.Meal;
 import com.meal_generator.repository.model.Recipe;
-import com.meal_generator.repository.model.enums.RecipeType;
 
 import java.util.List;
 
@@ -27,11 +25,6 @@ public class RecipeBuilder {
         return this;
     }
 
-    public RecipeBuilder withRecipeType(RecipeType recipeType) {
-        recipe.setRecipeType(recipeType);
-        return this;
-    }
-
     public RecipeBuilder withDays(Integer days) {
         recipe.setDays(days);
         return this;
@@ -47,12 +40,15 @@ public class RecipeBuilder {
         return this;
     }
 
-
     public RecipeBuilder withEstimatedTime(Integer estimatedTime) {
         recipe.setEstimatedTime(estimatedTime);
         return this;
     }
 
+    public RecipeBuilder withMeal(List<Meal> meals) {
+        recipe.setMealRecipes(meals);
+        return this;
+    }
 
     public Recipe build() {
         return recipe;

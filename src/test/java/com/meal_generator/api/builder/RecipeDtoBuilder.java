@@ -19,11 +19,6 @@ public class RecipeDtoBuilder {
         return this;
     }
 
-    public RecipeDtoBuilder withRecipeType(String recipeType) {
-        recipeDto.setRecipeType(recipeType);
-        return this;
-    }
-
     public RecipeDtoBuilder withDays(Integer days) {
         recipeDto.setDays(days);
         return this;
@@ -42,6 +37,11 @@ public class RecipeDtoBuilder {
 
     public RecipeDtoBuilder withEstimatedTime(Integer estimatedTime) {
         recipeDto.setEstimatedTime(estimatedTime);
+        return this;
+    }
+
+    public RecipeDtoBuilder withMeals(List<String> meals) {
+        recipeDto.setMeals(meals);
         return this;
     }
 

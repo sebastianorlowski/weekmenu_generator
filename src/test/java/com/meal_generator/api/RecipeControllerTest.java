@@ -2,6 +2,7 @@ package com.meal_generator.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meal_generator.api.common.ApiPath;
+import com.meal_generator.api.controller.RecipeController;
 import com.meal_generator.api.dto.RecipeDto;
 import com.meal_generator.api.mother.RecipeDtoMother;
 import com.meal_generator.service.RecipeService;

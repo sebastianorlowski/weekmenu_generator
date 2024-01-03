@@ -2,7 +2,7 @@ package com.meal_generator.repository.mother;
 
 import com.meal_generator.repository.builder.RecipeBuilder;
 import com.meal_generator.repository.model.Ingredient;
-import com.meal_generator.repository.model.enums.RecipeType;
+import com.meal_generator.repository.model.Meal;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ public class RecipeMother {
     public static final Long ID = 6L;
     public static final String EXTERNAL_ID = "ed1cfd2d-a7ed-4ca0-bc57-47c764d2eda0";
     public static final String NAME = "Spaghetti Bolognese";
-    public static final RecipeType RECIPE_TYPE = RecipeType.DINNER;
     public static final Integer DAYS = 2;
     public static final List<Ingredient> INGREDIENTS = List.of(
             IngredientMother.complete()
@@ -63,16 +62,17 @@ public class RecipeMother {
             "Once the spaghetti is cooked, drain it.\n" +
             "Serve the Bolognese sauce over the cooked spaghetti. You can sprinkle it with grated Parmesan and chopped fresh basil.";
     public static final Integer ESTIMATED_TIME = 30;
+    public static final List<Meal> MEALS = List.of(MealMother.complete().build());
 
     public static RecipeBuilder complete() {
         return new RecipeBuilder()
                 .withId(ID)
                 .withExternalId(EXTERNAL_ID)
                 .withName(NAME)
-                .withRecipeType(RECIPE_TYPE)
                 .withDays(DAYS)
                 .withIngredients(INGREDIENTS)
                 .withInstruction(INSTRUCTION)
-                .withEstimatedTime(ESTIMATED_TIME);
+                .withEstimatedTime(ESTIMATED_TIME)
+                .withMeal(MEALS);
     }
 }
