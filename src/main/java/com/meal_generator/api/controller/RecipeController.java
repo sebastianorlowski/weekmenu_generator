@@ -20,7 +20,7 @@ import static com.meal_generator.api.common.ApiPath.*;
 @AllArgsConstructor
 public class RecipeController {
 
-    private final RecipeService recipeService;
+    private RecipeService recipeService;
 
     @PostMapping(value = CREATE_RECIPE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createRecipe(@RequestBody @Valid RecipeDto recipeDto) {

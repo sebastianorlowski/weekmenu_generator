@@ -36,6 +36,5 @@ public class RecipeDto {
     @Max(value = 1200, message = RECIPE_ESTIMATED_TIME_MAX_ERROR)
     private Integer estimatedTime;
 
-    @Valid
-    private List<String> meals;
+    private List<MealDto> meals;
 }

@@ -1,11 +1,13 @@
 package com.meal_generator.api.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import static com.meal_generator.api.validation.MealDtoValidationMessage.*;
 import static com.meal_generator.api.validation.RecipeDtoValidationMessage.*;
@@ -24,4 +26,6 @@ public class MealDto {
             flags = Pattern.Flag.CASE_INSENSITIVE)
     @NotNull(message = MEAL_START_AT_REQUIRED_ERROR)
     private OffsetDateTime startAt;
+
+    private List<RecipeDto> recipes;
 }

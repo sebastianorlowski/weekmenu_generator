@@ -1,5 +1,6 @@
 package com.meal_generator.repository.model;
 
+import com.meal_generator.repository.model.common.AuditableEntity;
 import com.meal_generator.repository.model.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -12,7 +13,7 @@ import java.util.List;
 @Table(name = "meals")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Meal extends BaseEntity {
+public class Meal extends AuditableEntity {
 
     @Column
     private String name;

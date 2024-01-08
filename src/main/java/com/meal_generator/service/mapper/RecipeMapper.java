@@ -6,7 +6,9 @@ import org.mapstruct.CollectionMappingStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +23,9 @@ public interface RecipeMapper {
     RecipeDto asRecipeDto(Recipe recipe);
 
     default List<RecipeDto> asRecipeDtoList(List<Recipe> recipeList) {
+        if (CollectionUtils.isEmpty(recipeList)) {
+            return Collections.emptyList();
+        }
         return recipeList.stream()
                 .map(this::asRecipeDto)
                 .collect(Collectors.toList());

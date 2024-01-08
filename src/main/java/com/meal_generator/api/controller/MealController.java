@@ -15,7 +15,7 @@ import static com.meal_generator.api.common.ApiPath.*;
 @AllArgsConstructor
 public class MealController {
 
-    private final MealService mealService;
+    private MealService mealService;
 
     @PostMapping(value = CREATE_MEAL, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createMeal(@RequestBody @Valid MealDto mealDto) {
@@ -36,5 +36,12 @@ public class MealController {
     @GetMapping(value = RETRIEVE_MEALS, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> retrieveMeals() {
         return new ResponseEntity<>(mealService.retrieveMeals(), HttpStatus.OK);
+    }
+
+    @PostMapping(value = CREATE_CONNECTION_TO_RECIPE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> linkMealToRecipe(@RequestParam String mealId,
+                                              @RequestParam String recipeId) {
+        mealService.linkMealToRecipe(mealId, recipeId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
