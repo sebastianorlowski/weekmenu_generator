@@ -53,6 +53,6 @@ public class MealService {
 
     public Meal getMealByExternalId(String externalId) {
         return findMealByExternalId(externalId)
-                .orElseThrow(() -> new MealNotFoundException(MEAL_NOT_FOUND_ERROR, externalId);
+                .orElseThrow(() -> new MealNotFoundException(MEAL_NOT_FOUND_ERROR, externalId));
     }
 }
