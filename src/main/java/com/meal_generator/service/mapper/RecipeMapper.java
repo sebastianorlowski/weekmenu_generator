@@ -18,6 +18,7 @@ public interface RecipeMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "externalId", ignore = true)
     @Mapping(target = "dailyList", ignore = true)
+    @Mapping(target = "mealRecipes", ignore = true)
     Recipe asRecipeEntity(RecipeDto recipeDto);
 
     RecipeDto asRecipeDto(Recipe recipe);
@@ -28,7 +29,7 @@ public interface RecipeMapper {
         }
         return recipeList.stream()
                 .map(this::asRecipeDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Mapping(target = "id", ignore = true)

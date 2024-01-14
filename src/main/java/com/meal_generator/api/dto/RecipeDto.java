@@ -35,6 +35,4 @@ public class RecipeDto {
     @Min(value = 5, message = RECIPE_ESTIMATED_TIME_MIN_ERROR)
     @Max(value = 1200, message = RECIPE_ESTIMATED_TIME_MAX_ERROR)
     private Integer estimatedTime;
-
-    private List<MealDto> meals;
 }

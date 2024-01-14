@@ -60,8 +60,6 @@ public class RecipeDtoMother {
             "Once the spaghetti is cooked, drain it.\n" +
             "Serve the Bolognese sauce over the cooked spaghetti. You can sprinkle it with grated Parmesan and chopped fresh basil.";
     public static final Integer ESTIMATED_TIME = 30;
-    public static final String MEAL_EXTERNAL_ID = "de76efc4-d6b8-48e5-b0b1-05467b4ce141";
-    public static final List<String> MEALS = List.of(MEAL_EXTERNAL_ID);
 
     public static RecipeDtoBuilder complete() {
         return new RecipeDtoBuilder()
@@ -70,7 +68,6 @@ public class RecipeDtoMother {
                 .withDays(DAYS)
                 .withIngredients(INGREDIENTS)
                 .withInstruction(INSTRUCTION)
-                .withEstimatedTime(ESTIMATED_TIME)
-                .withMeals(MEALS);
+                .withEstimatedTime(ESTIMATED_TIME);
     }
 }

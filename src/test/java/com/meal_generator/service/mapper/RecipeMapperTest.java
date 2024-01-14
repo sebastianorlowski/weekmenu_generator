@@ -45,7 +45,6 @@ class RecipeMapperTest {
             assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientDtoMother.EXTRA_INFO);
         });
         assertThat(result.getDailyList()).isNull();
-        // to add meals
     }
 
     @Test
@@ -67,7 +66,6 @@ class RecipeMapperTest {
             assertThat(ingredient.getIsDivisible()).isEqualTo(IngredientMother.IS_DIVISIBLE);
             assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientMother.EXTRA_INFO);
         });
-        assertThat(result.getMeals()).isNull();
     }
 
     @Test

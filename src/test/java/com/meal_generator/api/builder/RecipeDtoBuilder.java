@@ -40,11 +40,6 @@ public class RecipeDtoBuilder {
         return this;
     }
 
-    public RecipeDtoBuilder withMeals(List<String> meals) {
-        recipeDto.setMeals(meals);
-        return this;
-    }
-
 
     public RecipeDto build() {
         return recipeDto;
