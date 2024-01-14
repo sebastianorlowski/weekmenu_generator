@@ -18,7 +18,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(MockitoExtension.class)
 class RecipeMapperTest {
 
     @InjectMocks
@@ -55,7 +54,7 @@ class RecipeMapperTest {
 
         RecipeDto result = mapper.asRecipeDto(recipe);
 
-        assertThat(result.getExternalId()).isEqualTo(RecipeMother.EXTERNAL_ID);
+        assertThat(result.getId()).isEqualTo(RecipeMother.EXTERNAL_ID);
         assertThat(result.getDays()).isEqualTo(RecipeMother.DAYS);
         assertThat(result.getInstruction()).isEqualTo(RecipeMother.INSTRUCTION);
         assertThat(result.getEstimatedTime()).isEqualTo(RecipeMother.ESTIMATED_TIME);

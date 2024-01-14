@@ -15,7 +15,7 @@ import static com.meal_generator.api.validation.RecipeDtoValidationMessage.*;
 @Data
 public class MealDto {
 
-    private String externalId;
+    private String id;
 
     @NotNull(message = MEAL_NAME_REQUIRED_ERROR)
     @Size(min = 3, max = 100, message = RECIPE_NAME_LENGTH_ERROR)

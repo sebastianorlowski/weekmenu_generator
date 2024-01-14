@@ -10,7 +10,7 @@ public class RecipeDtoBuilder {
     private RecipeDto recipeDto = new RecipeDto();
 
     public RecipeDtoBuilder withExternalId(String externalId) {
-        recipeDto.setExternalId(externalId);
+        recipeDto.setId(externalId);
         return this;
     }
 

@@ -12,14 +12,12 @@ public class MealMother {
     public static final Long ID = 18L;
     public static final String NAME = "BREAKFAST";
     public static final OffsetDateTime START_AT = OffsetDateTime.parse("2023-12-19T07:00:00Z");
-    public static final List<Recipe> RECIPES = List.of(RecipeMother.complete().build());
 
     public static MealBuilder complete() {
         return new MealBuilder()
                 .withId(ID)
                 .withExternalId(EXTERNAL_ID)
                 .withName(NAME)
-                .withStartAt(START_AT)
-                .withRecipes(RECIPES);
+                .withStartAt(START_AT);
     }
 }

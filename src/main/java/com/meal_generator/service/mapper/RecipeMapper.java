@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring", collectionMappingStrategy = CollectionMappingStrategy.TARGET_IMMUTABLE)
+@Mapper(collectionMappingStrategy = CollectionMappingStrategy.TARGET_IMMUTABLE)
 public interface RecipeMapper {
 
     @Mapping(target = "id", ignore = true)
@@ -21,6 +21,7 @@ public interface RecipeMapper {
     @Mapping(target = "mealRecipes", ignore = true)
     Recipe asRecipeEntity(RecipeDto recipeDto);
 
+    @Mapping(target = "id", source = "externalId")
     RecipeDto asRecipeDto(Recipe recipe);
 
     default List<RecipeDto> asRecipeDtoList(List<Recipe> recipeList) {

@@ -1,15 +1,17 @@
 package com.meal_generator.api.builder;
 
 import com.meal_generator.api.dto.MealDto;
+import com.meal_generator.api.dto.RecipeDto;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 public class MealDtoBuilder {
 
     private MealDto mealDto = new MealDto();
 
     public MealDtoBuilder withExternalId(String externalId) {
-        mealDto.setExternalId(externalId);
+        mealDto.setId(externalId);
         return this;
     }
 
@@ -20,6 +22,11 @@ public class MealDtoBuilder {
 
     public MealDtoBuilder withStartAt(OffsetDateTime startAt) {
         mealDto.setStartAt(startAt);
+        return this;
+    }
+
+    public MealDtoBuilder withRecipes(List<RecipeDto> recipes) {
+        mealDto.setRecipes(recipes);
         return this;
     }
 

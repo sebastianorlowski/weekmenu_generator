@@ -26,7 +26,9 @@ public class MealService {
     private RecipeMapper recipeMapper;
 
     public MealDto createMeal(MealDto mealDto) {
-        return null;
+        Meal meal = mealMapper.asMealEntity(mealDto);
+        Meal savedMeal = mealRepository.save(meal);
+        return mealMapper.asMealDto(savedMeal);
     }
 
     public MealDto updateMeal(String id, MealDto mealDto) {
