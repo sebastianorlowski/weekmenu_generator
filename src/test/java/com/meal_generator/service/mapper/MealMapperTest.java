@@ -1,7 +1,6 @@
 package com.meal_generator.service.mapper;
 
 import com.meal_generator.api.dto.MealDto;
-import com.meal_generator.api.dto.RecipeDto;
 import com.meal_generator.api.mother.MealDtoMother;
 import com.meal_generator.repository.model.Meal;
 import com.meal_generator.repository.model.Recipe;
@@ -16,7 +15,6 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MealMapperTest {
 

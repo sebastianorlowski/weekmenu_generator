@@ -6,6 +6,7 @@ import com.meal_generator.repository.RecipeRepository;
 import com.meal_generator.repository.model.Recipe;
 import com.meal_generator.service.mapper.RecipeMapper;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 import static com.meal_generator.api.validation.RecipeDtoValidationMessage.RECIPE_NOT_FOUND_ERROR;
 
 @Service
+@NoArgsConstructor
 @AllArgsConstructor
 public class RecipeService {
 
@@ -28,8 +30,8 @@ public class RecipeService {
     }
 
     public RecipeDto updateRecipe(String id, RecipeDto recipeDto) {
-        Recipe recipe = recipeMapper.asRecipeEntity(recipeDto);
         Recipe existingRecipe = getRecipeByExternalId(id);
+        Recipe recipe = recipeMapper.asRecipeEntity(recipeDto);
         recipeMapper.updateRecipe(existingRecipe, recipe);
         Recipe savedRecipe = recipeRepository.save(existingRecipe);
         return recipeMapper.asRecipeDto(savedRecipe);

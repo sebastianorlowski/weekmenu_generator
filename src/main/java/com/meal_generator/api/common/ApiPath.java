@@ -15,5 +15,6 @@ public class ApiPath {
     public static final String RETRIEVE_MEAL = "/meal/{id}";
     public static final String RETRIEVE_MEALS= "/meals";
     public static final String UPDATE_MEAL = "/meal/{id}";
-    public static final String CREATE_CONNECTION_TO_RECIPE = "/meal/";
+    public static final String CREATE_CONNECTION_TO_RECIPE = "/meal";
+    public static final String UPDATE_CONNECTION_TO_RECIPE = "/meal";
 }

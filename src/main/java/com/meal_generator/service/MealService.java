@@ -8,6 +8,7 @@ import com.meal_generator.repository.model.Recipe;
 import com.meal_generator.service.mapper.MealMapper;
 import com.meal_generator.service.mapper.RecipeMapper;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -17,13 +18,13 @@ import java.util.Optional;
 import static com.meal_generator.api.validation.MealDtoValidationMessage.MEAL_NOT_FOUND_ERROR;
 
 @Service
+@NoArgsConstructor
 @AllArgsConstructor
 public class MealService {
 
     private MealRepository mealRepository;
     private MealMapper mealMapper;
     private RecipeService recipeService;
-    private RecipeMapper recipeMapper;
 
     public MealDto createMeal(MealDto mealDto) {
         Meal meal = mealMapper.asMealEntity(mealDto);
@@ -32,21 +33,34 @@ public class MealService {
     }
 
     public MealDto updateMeal(String id, MealDto mealDto) {
-        return null;
+        Meal existingMeal = getMealByExternalId(id);
+        Meal meal = mealMapper.asMealEntity(mealDto);
+        mealMapper.updateMeal(existingMeal, meal);
+        Meal savedMeal = mealRepository.save(existingMeal);
+        return mealMapper.asMealDto(savedMeal);
     }
 
     public MealDto retrieveMeal(String id) {
-        return null;
+        Meal meal = getMealByExternalId(id);
+        return mealMapper.asMealDto(meal);
     }
 
     public List<MealDto> retrieveMeals() {
-        return Collections.emptyList();
+        List<Meal> mealList = mealRepository.findAll();
+        return mealMapper.asMealDtoList(mealList);
     }
 
     public void linkMealToRecipe(String mealId, String recipeId) {
         Meal meal = getMealByExternalId(mealId);
         Recipe recipe = recipeService.getRecipeByExternalId(recipeId);
         meal.getMealRecipes().add(recipe);
+        mealRepository.save(meal);
+    }
+
+    public void unLinkMealToRecipe(String mealId, String recipeId) {
+        Meal meal = getMealByExternalId(mealId);
+        Recipe recipe = recipeService.getRecipeByExternalId(recipeId);
+        meal.getMealRecipes().remove(recipe);
     }
 
     public Optional<Meal> findMealByExternalId(String externalId) {

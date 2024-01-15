@@ -44,4 +44,11 @@ public class MealController {
         mealService.linkMealToRecipe(mealId, recipeId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PutMapping(value = UPDATE_CONNECTION_TO_RECIPE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> updateMealToRecipe(@RequestParam String mealId,
+                                                @RequestParam String recipeId) {
+        mealService.unLinkMealToRecipe(mealId, recipeId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

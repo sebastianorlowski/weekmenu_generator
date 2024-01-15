@@ -23,6 +23,8 @@ public class RecipeMother {
             "Serve the Bolognese sauce over the cooked spaghetti. You can sprinkle it with grated Parmesan and chopped fresh basil.";
     public static final Integer ESTIMATED_TIME = 30;
 
+    public static final List<Meal> MEAL_LIST = List.of(MealMother.complete().build());
+
     public static RecipeBuilder complete() {
         return new RecipeBuilder()
                 .withId(ID)
@@ -30,6 +32,7 @@ public class RecipeMother {
                 .withName(NAME)
                 .withDays(DAYS)
                 .withInstruction(INSTRUCTION)
-                .withEstimatedTime(ESTIMATED_TIME);
+                .withEstimatedTime(ESTIMATED_TIME)
+                .withMeal(MEAL_LIST);
     }
 }
