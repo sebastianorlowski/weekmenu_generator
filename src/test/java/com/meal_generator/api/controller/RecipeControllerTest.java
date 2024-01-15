@@ -1,4 +1,4 @@
-package com.meal_generator.api;
+package com.meal_generator.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meal_generator.api.common.ApiPath;
@@ -6,6 +6,8 @@ import com.meal_generator.api.controller.RecipeController;
 import com.meal_generator.api.dto.RecipeDto;
 import com.meal_generator.api.mother.RecipeDtoMother;
 import com.meal_generator.service.RecipeService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -28,7 +30,6 @@ class RecipeControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-
     @Autowired
     private MockMvc mockMvc;
 

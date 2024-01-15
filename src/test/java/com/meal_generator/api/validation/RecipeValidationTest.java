@@ -1,4 +1,4 @@
-package com.meal_generator.api;
+package com.meal_generator.api.validation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meal_generator.api.common.ApiPath;

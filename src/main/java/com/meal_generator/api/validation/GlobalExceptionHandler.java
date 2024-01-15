@@ -11,7 +11,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.zip.DataFormatException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -29,6 +31,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Map<String, List<String>>> handleValidationErrors(HttpMessageNotReadableException ex) {
+        String error = ex.getMessage();
+
+        return new ResponseEntity<>(getErrorsMap(List.of(error)), new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DateTimeParseException.class)
+    public ResponseEntity<Map<String, List<String>>> handleValidationErrors(DateTimeParseException ex) {
         String error = ex.getMessage();
 
         return new ResponseEntity<>(getErrorsMap(List.of(error)), new HttpHeaders(), HttpStatus.BAD_REQUEST);
