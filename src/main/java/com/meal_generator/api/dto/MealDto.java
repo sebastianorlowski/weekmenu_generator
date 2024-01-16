@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class MealDto {
     private String name;
 
     @NotNull(message = MEAL_START_AT_REQUIRED_ERROR)
-    private OffsetDateTime startAt;
+    private LocalTime startAt;
 
     private List<RecipeDto> recipes;
 }

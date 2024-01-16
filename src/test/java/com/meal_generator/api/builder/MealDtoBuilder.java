@@ -3,6 +3,7 @@ package com.meal_generator.api.builder;
 import com.meal_generator.api.dto.MealDto;
 import com.meal_generator.api.dto.RecipeDto;
 
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class MealDtoBuilder {
         return this;
     }
 
-    public MealDtoBuilder withStartAt(OffsetDateTime startAt) {
+    public MealDtoBuilder withStartAt(LocalTime startAt) {
         mealDto.setStartAt(startAt);
         return this;
     }

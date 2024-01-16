@@ -3,11 +3,11 @@ package com.meal_generator.service;
 import com.meal_generator.api.dto.MealDto;
 import com.meal_generator.api.mother.MealDtoMother;
 import com.meal_generator.api.validation.exception.MealNotFoundException;
+import com.meal_generator.api.validation.validator.MealValidator;
 import com.meal_generator.repository.MealRepository;
 import com.meal_generator.repository.model.Meal;
 import com.meal_generator.repository.mother.MealMother;
 import com.meal_generator.service.mapper.MealMapper;
-import com.meal_generator.service.mapper.RecipeMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,6 +19,7 @@ import java.util.Optional;
 import static com.meal_generator.api.validation.MealDtoValidationMessage.MEAL_NOT_FOUND_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -31,6 +32,8 @@ class MealServiceTest {
     private RecipeService recipeService;
     @Mock
     private MealRepository mealRepository;
+    @Mock
+    private MealValidator mealValidator;
     @InjectMocks
     private MealService mealService;
 
@@ -92,6 +95,8 @@ class MealServiceTest {
         MealDto result = mealService.createMeal(mealDto);
 
         assertThat(result).isEqualTo(mealDto);
+
+        verify(mealValidator).validateCreateMeal(mealDto);
     }
 
     @Test
@@ -114,5 +119,7 @@ class MealServiceTest {
         MealDto result = mealService.updateMeal(MealDtoMother.EXTERNAL_ID, mealDto);
 
         assertThat(result).isEqualTo(mealDto);
+
+        verify(mealValidator).validateUpdateMeal(MealMother.NAME, mealDto);
     }
 }

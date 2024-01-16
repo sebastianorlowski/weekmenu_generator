@@ -1,5 +1,6 @@
 package com.meal_generator.api.validation;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meal_generator.api.common.ApiPath;
 import com.meal_generator.api.controller.RecipeController;
@@ -44,6 +45,22 @@ public class RecipeValidationTest {
     @Nested
     @DisplayName("POST " + ApiPath.CREATE_RECIPE)
     class CreateRecipeValidationTests {
+
+        @Test
+        void shouldValidateSuccessfully() throws Exception {
+            RecipeDto recipeDto = RecipeDtoMother.complete().build();
+            RecipeDto meal = mock(RecipeDto.class);
+            when(recipeService.createRecipe(meal))
+                    .thenReturn(recipeDto);
+
+            MockHttpServletResponse response = mockMvc.perform(post(ApiPath.CREATE_RECIPE)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(recipeDto)))
+                    .andExpect(status().isCreated())
+                    .andReturn().getResponse();
+
+            assertThat(response.getStatus()).isEqualTo(201);
+        }
 
         @Test
         void shouldThrowExceptionWhenNameIsNull() throws Exception {

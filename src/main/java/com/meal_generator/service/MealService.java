@@ -1,20 +1,21 @@
 package com.meal_generator.service;
 
 import com.meal_generator.api.dto.MealDto;
+import com.meal_generator.api.validation.exception.MealException;
 import com.meal_generator.api.validation.exception.MealNotFoundException;
+import com.meal_generator.api.validation.validator.MealValidator;
 import com.meal_generator.repository.MealRepository;
 import com.meal_generator.repository.model.Meal;
 import com.meal_generator.repository.model.Recipe;
 import com.meal_generator.service.mapper.MealMapper;
-import com.meal_generator.service.mapper.RecipeMapper;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import static com.meal_generator.api.validation.MealDtoValidationMessage.MEAL_NAME_EXISTS_ERROR;
 import static com.meal_generator.api.validation.MealDtoValidationMessage.MEAL_NOT_FOUND_ERROR;
 
 @Service
@@ -25,8 +26,11 @@ public class MealService {
     private MealRepository mealRepository;
     private MealMapper mealMapper;
     private RecipeService recipeService;
+    private MealValidator mealValidator;
 
     public MealDto createMeal(MealDto mealDto) {
+        mealValidator.validateCreateMeal(mealDto);
+
         Meal meal = mealMapper.asMealEntity(mealDto);
         Meal savedMeal = mealRepository.save(meal);
         return mealMapper.asMealDto(savedMeal);
@@ -34,6 +38,8 @@ public class MealService {
 
     public MealDto updateMeal(String id, MealDto mealDto) {
         Meal existingMeal = getMealByExternalId(id);
+        mealValidator.validateUpdateMeal(existingMeal.getName(), mealDto);
+
         Meal meal = mealMapper.asMealEntity(mealDto);
         mealMapper.updateMeal(existingMeal, meal);
         Meal savedMeal = mealRepository.save(existingMeal);
@@ -70,5 +76,11 @@ public class MealService {
     public Meal getMealByExternalId(String externalId) {
         return findMealByExternalId(externalId)
                 .orElseThrow(() -> new MealNotFoundException(MEAL_NOT_FOUND_ERROR, externalId));
+    }
+
+    public void isMealExistsByName(String name) {
+        if (mealRepository.existsMealByName(name)) {
+            throw new MealException(MEAL_NAME_EXISTS_ERROR, name);
+        }
     }
 }

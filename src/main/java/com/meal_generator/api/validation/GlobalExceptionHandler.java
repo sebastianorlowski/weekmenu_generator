@@ -1,5 +1,6 @@
 package com.meal_generator.api.validation;
 
+import com.meal_generator.api.validation.exception.MealException;
 import com.meal_generator.api.validation.exception.MealNotFoundException;
 import com.meal_generator.api.validation.exception.RecipeNotFoundException;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.format.DateTimeParseException;
 import java.util.*;
-import java.util.zip.DataFormatException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -55,6 +55,13 @@ public class GlobalExceptionHandler {
         String error = ex.getMessage();
 
         return new ResponseEntity<>(getErrorsMap(List.of(error)), new HttpHeaders(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(MealException.class)
+    public ResponseEntity<Map<String, List<String>>> handleValidationErrors(MealException ex) {
+        String error = ex.getMessage();
+
+        return new ResponseEntity<>(getErrorsMap(List.of(error)), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
     private Map<String, List<String>> getErrorsMap(List<String> errors) {

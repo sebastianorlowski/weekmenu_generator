@@ -1,6 +1,7 @@
 package com.meal_generator.api.controller;
 
 import com.meal_generator.api.dto.MealDto;
+import com.meal_generator.api.validation.validator.MealValidator;
 import com.meal_generator.service.MealService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

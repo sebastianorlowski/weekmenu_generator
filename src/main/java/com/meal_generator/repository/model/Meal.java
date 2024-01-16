@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Meal extends AuditableEntity {
     private String name;
 
     @Column(name = "start_at")
-    private OffsetDateTime startAt;
+    private LocalTime startAt;
 
     @ManyToMany
     @JoinTable(

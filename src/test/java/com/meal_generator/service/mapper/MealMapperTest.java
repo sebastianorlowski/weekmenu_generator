@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import org.mockito.InjectMocks;
 
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -66,7 +67,7 @@ class MealMapperTest {
     @Test
     void shouldUpdateMeal() {
         final String newMealName = "meal";
-        final OffsetDateTime mealStart = OffsetDateTime.parse("2021-08-10T12:00:00Z");
+        final LocalTime mealStart = LocalTime.parse("12:00");
         Recipe recipe = RecipeMother.complete()
                 .withIngredients(List.of(IngredientMother.complete().build()))
                 .build();

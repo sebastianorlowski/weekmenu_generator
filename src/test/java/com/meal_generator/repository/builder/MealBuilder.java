@@ -3,6 +3,7 @@ package com.meal_generator.repository.builder;
 import com.meal_generator.repository.model.Meal;
 import com.meal_generator.repository.model.Recipe;
 
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class MealBuilder {
         return this;
     }
 
-    public MealBuilder withStartAt(OffsetDateTime startAt) {
+    public MealBuilder withStartAt(LocalTime startAt) {
         meal.setStartAt(startAt);
         return this;
     }

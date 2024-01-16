@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static com.meal_generator.api.validation.RecipeDtoValidationMessage.RECIPE_NOT_FOUND_ERROR;
 
