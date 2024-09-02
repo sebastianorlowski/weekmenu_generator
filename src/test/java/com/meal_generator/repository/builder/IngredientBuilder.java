@@ -16,21 +16,6 @@ public class IngredientBuilder {
         return this;
     }
 
-    public IngredientBuilder withWorth(Integer worth) {
-        ingredient.setWorth(worth);
-        return this;
-    }
-
-    public IngredientBuilder withCountable(Boolean isCountable) {
-        ingredient.setIsCountable(isCountable);
-        return this;
-    }
-
-    public IngredientBuilder withDivisible(Boolean isDivisible) {
-        ingredient.setIsDivisible(isDivisible);
-        return this;
-    }
-
     public IngredientBuilder withExtraInfo(String extraInfo) {
         ingredient.setExtraInfo(extraInfo);
         return this;

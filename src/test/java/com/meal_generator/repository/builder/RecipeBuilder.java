@@ -45,11 +45,6 @@ public class RecipeBuilder {
         return this;
     }
 
-    public RecipeBuilder withMeal(List<Meal> meals) {
-        recipe.setMealRecipes(meals);
-        return this;
-    }
-
     public Recipe build() {
         return recipe;
     }

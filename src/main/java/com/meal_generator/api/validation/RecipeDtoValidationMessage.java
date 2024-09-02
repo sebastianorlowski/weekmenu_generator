@@ -21,9 +21,11 @@ public class RecipeDtoValidationMessage {
 
     public static final String RECIPE_INGREDIENT_NAME_REQUIRED_ERROR = "Ingredient name is required.";
     public static final String RECIPE_INGREDIENT_NAME_LENGTH_ERROR = "The name of the ingredient should be between 3 and 100 characters.";
-    public static final String RECIPE_INGREDIENT_WORTH_REQUIRED_ERROR = "Ingredient worth is required.";
-    public static final String RECIPE_INGREDIENT_WORTH_MIN_ERROR = "The minimum number of worth is 0g.";
-    public static final String RECIPE_INGREDIENT_WORTH_MAX_ERROR = "The maximum number of worth is 1000000g.";
+    public static final String RECIPE_INGREDIENT_QUANTITY_REQUIRED_ERROR = "Ingredient quantity is required.";
+    public static final String RECIPE_INGREDIENT_QUANTITY_MIN_ERROR = "The minimum number of quantity is 0.";
+    public static final String RECIPE_INGREDIENT_QUANTITY_MAX_ERROR = "The maximum number of quantity is 1000000.";
+    public static final String RECIPE_INGREDIENT_UNIT_REQUIRED_ERROR = "Ingredient unit is required.";
+    public static final String RECIPE_INGREDIENT_UNIT_LENGTH_ERROR = "The unit of the ingredient should be between 1 and 100 characters.";
     public static final String RECIPE_INGREDIENT_EXTRA_INFO_LENGTH_ERROR = "The extra info of the ingredient should be between 0 and 1000 characters.;";
 
     /** 404 **/

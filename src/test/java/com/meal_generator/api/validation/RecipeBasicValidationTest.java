@@ -1,6 +1,5 @@
 package com.meal_generator.api.validation;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meal_generator.api.common.ApiPath;
 import com.meal_generator.api.controller.RecipeController;
@@ -31,7 +30,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(RecipeController.class)
-public class RecipeValidationTest {
+public class RecipeBasicValidationTest {
 
     @MockBean
     private RecipeService recipeService;
@@ -226,11 +225,11 @@ public class RecipeValidationTest {
             RecipeDto recipeDto = RecipeDtoMother.complete()
                     .withIngredients(List.of(
                             IngredientDtoMother.complete()
-                                    .withWorth(null)
+                                    .withQuantity(null)
                                     .build()))
                     .build();
 
-            validate(recipeDto, RECIPE_INGREDIENT_WORTH_REQUIRED_ERROR);
+            validate(recipeDto, RECIPE_INGREDIENT_QUANTITY_REQUIRED_ERROR);
         }
 
         @Test
@@ -238,11 +237,11 @@ public class RecipeValidationTest {
             RecipeDto recipeDto = RecipeDtoMother.complete()
                     .withIngredients(List.of(
                             IngredientDtoMother.complete()
-                                    .withWorth(-1)
+                                    .withQuantity(-1)
                                     .build()))
                     .build();
 
-            validate(recipeDto, RECIPE_INGREDIENT_WORTH_MIN_ERROR);
+            validate(recipeDto, RECIPE_INGREDIENT_QUANTITY_MIN_ERROR);
         }
 
         @Test
@@ -250,11 +249,11 @@ public class RecipeValidationTest {
             RecipeDto recipeDto = RecipeDtoMother.complete()
                     .withIngredients(List.of(
                             IngredientDtoMother.complete()
-                                    .withWorth(10000001)
+                                    .withQuantity(10000001)
                                     .build()))
                     .build();
 
-            validate(recipeDto, RECIPE_INGREDIENT_WORTH_MAX_ERROR);
+            validate(recipeDto, RECIPE_INGREDIENT_QUANTITY_MAX_ERROR);
         }
 
         @Test

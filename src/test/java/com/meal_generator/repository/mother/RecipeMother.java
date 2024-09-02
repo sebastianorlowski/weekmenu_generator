@@ -32,7 +32,6 @@ public class RecipeMother {
                 .withName(NAME)
                 .withDays(DAYS)
                 .withInstruction(INSTRUCTION)
-                .withEstimatedTime(ESTIMATED_TIME)
-                .withMeal(MEAL_LIST);
+                .withEstimatedTime(ESTIMATED_TIME);
     }
 }

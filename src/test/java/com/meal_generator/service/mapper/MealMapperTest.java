@@ -56,9 +56,6 @@ class MealMapperTest {
             assertThat(recipeElement.getEstimatedTime()).isEqualTo(RecipeMother.ESTIMATED_TIME);
             assertThat(recipeElement.getIngredients()).singleElement().satisfies(ingredient -> {
                 assertThat(ingredient.getName()).isEqualTo(IngredientMother.NAME);
-                assertThat(ingredient.getWorth()).isEqualTo(IngredientMother.WORTH);
-                assertThat(ingredient.getIsCountable()).isEqualTo(IngredientMother.IS_COUNTABLE);
-                assertThat(ingredient.getIsDivisible()).isEqualTo(IngredientMother.IS_DIVISIBLE);
                 assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientMother.EXTRA_INFO);
             });
         });
@@ -99,9 +96,6 @@ class MealMapperTest {
             assertThat(recipeElement.getEstimatedTime()).isEqualTo(RecipeMother.ESTIMATED_TIME);
             assertThat(recipeElement.getIngredients()).singleElement().satisfies(ingredient -> {
                 assertThat(ingredient.getName()).isEqualTo(IngredientMother.NAME);
-                assertThat(ingredient.getWorth()).isEqualTo(IngredientMother.WORTH);
-                assertThat(ingredient.getIsCountable()).isEqualTo(IngredientMother.IS_COUNTABLE);
-                assertThat(ingredient.getIsDivisible()).isEqualTo(IngredientMother.IS_DIVISIBLE);
                 assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientMother.EXTRA_INFO);
             });
         });

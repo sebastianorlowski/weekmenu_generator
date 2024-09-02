@@ -1,6 +1,5 @@
 package com.meal_generator.api.dto;
 
-import com.meal_generator.repository.model.Meal;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -23,10 +22,6 @@ public class RecipeDto {
     @Max(value = 7, message = RECIPE_DAYS_MAX_ERROR)
     private Integer days;
 
-    @NotEmpty(message = RECIPE_INGREDIENTS_REQUIRED_ERROR)
-    @Valid
-    private List<IngredientDto> ingredients;
-
     @NotNull(message = RECIPE_INSTRUCTION_REQUIRED_ERROR)
     @Size(min = 10, max = 10000, message = RECIPE_INSTRUCTION_LENGTH_ERROR)
     private String instruction;
@@ -35,4 +30,8 @@ public class RecipeDto {
     @Min(value = 5, message = RECIPE_ESTIMATED_TIME_MIN_ERROR)
     @Max(value = 1200, message = RECIPE_ESTIMATED_TIME_MAX_ERROR)
     private Integer estimatedTime;
+
+    @NotEmpty(message = RECIPE_INGREDIENTS_REQUIRED_ERROR)
+    @Valid
+    private List<IngredientDto> ingredients;
 }

@@ -54,7 +54,12 @@ public class RecipeService {
         return recipeRepository.findRecipeByExternalId(id);
     }
 
-    public List<Recipe> findRecipes() {
+    private List<Recipe> findRecipes() {
         return recipeRepository.findAll();
+    }
+
+    public void deleteRecipe(String id) {
+        Recipe recipe = getRecipeByExternalId(id);
+        recipeRepository.delete(recipe);
     }
 }

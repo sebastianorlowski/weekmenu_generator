@@ -42,4 +42,10 @@ public class RecipeController {
     public ResponseEntity<?> retrieveRecipes() {
         return new ResponseEntity<>(recipeService.retrieveRecipes(), HttpStatus.OK);
     }
+
+    @DeleteMapping(value = DELETE_RECIPE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> deleteRecipes(@PathVariable String id) {
+        recipeService.deleteRecipe(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

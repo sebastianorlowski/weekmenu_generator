@@ -4,7 +4,11 @@ public class MealException extends RuntimeException {
 
     private String name;
 
-    public MealException(String message, String name) {
-        super(String.format(message, name));
+    public MealException(String message, String... names) {
+        super(String.format(message, names));
+    }
+
+    public MealException(String message) {
+        super(message);
     }
 }

@@ -11,23 +11,18 @@ public class IngredientDtoBuilder {
         return this;
     }
 
-    public IngredientDtoBuilder withWorth(Integer worth) {
-        ingredientDto.setWorth(worth);
-        return this;
-    }
-
-    public IngredientDtoBuilder withCountable(Boolean isCountable) {
-        ingredientDto.setIsCountable(isCountable);
-        return this;
-    }
-
-    public IngredientDtoBuilder withDivisible(Boolean isDivisible) {
-        ingredientDto.setIsDivisible(isDivisible);
-        return this;
-    }
-
     public IngredientDtoBuilder withExtraInfo(String extraInfo) {
         ingredientDto.setExtraInfo(extraInfo);
+        return this;
+    }
+
+    public IngredientDtoBuilder withQuantity(Integer quantity) {
+        ingredientDto.setQuantity(quantity);
+        return this;
+    }
+
+    public IngredientDtoBuilder withUnit(String unit) {
+        ingredientDto.setUnit(unit);
         return this;
     }
 

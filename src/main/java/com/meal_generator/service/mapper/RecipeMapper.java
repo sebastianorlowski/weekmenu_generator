@@ -17,8 +17,6 @@ public interface RecipeMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "externalId", ignore = true)
-    @Mapping(target = "dailyList", ignore = true)
-    @Mapping(target = "mealRecipes", ignore = true)
     Recipe asRecipeEntity(RecipeDto recipeDto);
 
     @Mapping(target = "id", source = "externalId")
@@ -35,6 +33,5 @@ public interface RecipeMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "externalId", ignore = true)
-    @Mapping(target = "dailyList", ignore = true)
     Recipe updateRecipe(@MappingTarget Recipe existingRecipe, Recipe recipe);
 }

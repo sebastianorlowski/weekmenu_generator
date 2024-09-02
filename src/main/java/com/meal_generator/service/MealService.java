@@ -78,9 +78,13 @@ public class MealService {
                 .orElseThrow(() -> new MealNotFoundException(MEAL_NOT_FOUND_ERROR, externalId));
     }
 
-    public void isMealExistsByName(String name) {
-        if (mealRepository.existsMealByName(name)) {
-            throw new MealException(MEAL_NAME_EXISTS_ERROR, name);
-        }
+    public void createDailyMealSchedule(String name, List<String> mealNames) {
+        List<Meal> mealList = mealRepository.findAllByNameIn(mealNames);
+        mealValidator.validateCreateDailyMealSchedule(name, mealNames, mealList);
+
+    }
+
+    public void deleteDailyMealSchedule(String name) {
+
     }
 }

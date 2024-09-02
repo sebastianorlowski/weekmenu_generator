@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.time.LocalTime;
-import java.time.OffsetDateTime;
 import java.util.List;
 
 import static com.meal_generator.api.validation.MealDtoValidationMessage.*;

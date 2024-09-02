@@ -5,10 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meal_generator.api.common.ApiPath;
 import com.meal_generator.api.controller.MealController;
 import com.meal_generator.api.dto.MealDto;
-import com.meal_generator.api.dto.RecipeDto;
 import com.meal_generator.api.mother.MealDtoMother;
 import com.meal_generator.service.MealService;
-import com.meal_generator.service.RecipeService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -19,7 +17,6 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +28,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(MealController.class)
-public class MealValidationTest {
+public class MealBasicValidationTest {
 
     @MockBean
     private MealService mealService;

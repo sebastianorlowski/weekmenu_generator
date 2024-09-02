@@ -38,12 +38,8 @@ class RecipeMapperTest {
         assertThat(result.getEstimatedTime()).isEqualTo(RecipeDtoMother.ESTIMATED_TIME);
         assertThat(result.getIngredients()).singleElement().satisfies(ingredient -> {
             assertThat(ingredient.getName()).isEqualTo(IngredientDtoMother.NAME);
-            assertThat(ingredient.getWorth()).isEqualTo(IngredientDtoMother.WORTH);
-            assertThat(ingredient.getIsCountable()).isEqualTo(IngredientDtoMother.IS_COUNTABLE);
-            assertThat(ingredient.getIsDivisible()).isEqualTo(IngredientDtoMother.IS_DIVISIBLE);
             assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientDtoMother.EXTRA_INFO);
         });
-        assertThat(result.getDailyList()).isNull();
     }
 
     @Test
@@ -60,9 +56,6 @@ class RecipeMapperTest {
         assertThat(result.getEstimatedTime()).isEqualTo(RecipeMother.ESTIMATED_TIME);
         assertThat(result.getIngredients()).singleElement().satisfies(ingredient -> {
             assertThat(ingredient.getName()).isEqualTo(IngredientMother.NAME);
-            assertThat(ingredient.getWorth()).isEqualTo(IngredientMother.WORTH);
-            assertThat(ingredient.getIsCountable()).isEqualTo(IngredientMother.IS_COUNTABLE);
-            assertThat(ingredient.getIsDivisible()).isEqualTo(IngredientMother.IS_DIVISIBLE);
             assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientMother.EXTRA_INFO);
         });
     }
@@ -80,7 +73,6 @@ class RecipeMapperTest {
                 .withDays(5)
                 .withInstruction("test_instruction")
                 .withIngredients(List.of(IngredientMother.complete()
-                        .withCountable(false)
                         .withName("potatoe")
                         .build()))
                 .build();
@@ -94,15 +86,7 @@ class RecipeMapperTest {
         assertThat(result.getEstimatedTime()).isEqualTo(RecipeMother.ESTIMATED_TIME);
         assertThat(result.getIngredients()).singleElement().satisfies(ingredient -> {
             assertThat(ingredient.getName()).isEqualTo(ingredientName);
-            assertThat(ingredient.getWorth()).isEqualTo(IngredientMother.WORTH);
-            assertThat(ingredient.getIsCountable()).isEqualTo(isCountable);
-            assertThat(ingredient.getIsDivisible()).isEqualTo(IngredientMother.IS_DIVISIBLE);
             assertThat(ingredient.getExtraInfo()).isEqualTo(IngredientMother.EXTRA_INFO);
-        });
-        assertThat(result.getDailyList()).isNull();
-        assertThat(result.getMealRecipes()).singleElement().satisfies(recipe -> {
-            assertThat(recipe.getStartAt()).isEqualTo(MealMother.START_AT);
-            assertThat(recipe.getName()).isEqualTo(MealMother.NAME);
         });
     }
 }

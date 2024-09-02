@@ -25,7 +25,7 @@ public class MenuController {
 
     // Week menu - generate menu
     @GetMapping(value = CREATE_WEEK_MENU, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createWeekMenu() {
+    public ResponseEntity<?> createWeekMenu(Boolean isWeekendDifferently) {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
